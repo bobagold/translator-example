@@ -38,7 +38,10 @@
                 }
             };
         }
+        window.onload = function() {
+            window.t = new translator();
+        }
     </script>
-    <a href="#" onclick="var l = this; t = new translator(); t.translate(l.innerText, function(text) { l.innerText = text; }); return false">Translate me</a>
+    <a href="#" onclick="var l = this; t.translate(l.innerText, function(text) { l.innerText = text; }); return false">Translate me</a>
 </body>
 </html>
