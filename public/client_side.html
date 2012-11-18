@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Translated example site</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+</head>
+<body>
+    Client-side - md5
+    <script type="text/javascript">document.domain = document.location.hostname</script>
+    <script type="text/javascript" src="md5-min.js"></script>
+    <iframe src="//t.te.novadoo.vgold.xiag.ch/server.html" width="1" height="1" frameborder="0" id="translate_s"
+            onload="this.contentWindow.initTranslation('en', 'index.php');"></iframe>
+    <!--
+    <iframe src="//t.te.novadoo.vgold.xiag.ch/" width="1" height="1" frameborder="0" id="translate"
+             onload="this.contentWindow.initTranslation('en', 'index.php');"></iframe>
+    -->
+
+    <script type="text/javascript">
+        var translator = function() {
+            var translate_s = document.getElementById('translate_s');
+            var mts = translate_s.contentWindow.mts;
+            var translate = document.getElementById('translate');
+            var mt = translate ? translate.contentWindow.mt : null;
+            var translator_mode = !!translate;
+            var decorate = function(key, translation) {
+                if (translator_mode)
+                    return "\u2018" + key + "\u2019" + translation + "\u2019";
+                return translation;
+            }
+            return {
+                translate: function(text, translated) {
+                    var key = hex_md5(text);
+                    mts.translate(key, function(aaa) {
+                        translated(decorate(key, key == aaa ? text : aaa));
+                        if (translator_mode && mt)
+                            mt.bindEvents();
+                    });
+                }
+            };
+        }
+    </script>
+    <a href="#" onclick="var l = this; t = new translator(); t.translate(l.innerText, function(text) { l.innerText = text; }); return false">Translate me</a>
+</body>
+</html>
