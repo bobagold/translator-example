@@ -36,6 +36,8 @@
                     var key = hex_md5(text);
                     var translation = map[key];
                     translated(decorate(key, translation ? translation : text));
+                    if (translator_mode && mt)
+                        mt.bindEvents();
                 }
             };
         }
