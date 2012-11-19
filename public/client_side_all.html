@@ -28,9 +28,11 @@
                 return translation;
             }
             var map = {};
-            mts.all(function(aaa) {
-                map = aaa;
-            });
+            if (mts) {
+                mts.all(function(aaa) {
+                    map = aaa;
+                });
+            }
             return {
                 translate: function(text, translated) {
                     var key = hex_md5(text);
