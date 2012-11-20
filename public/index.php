@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Translated example site</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+</head>
+<body>
 <?php
 require dirname(__DIR__) . '/vendor/autoload.php';
 
@@ -17,3 +24,6 @@ function translator() {
                 Translator\Application::TRANSLATE_ON: Translator\Application::TRANSLATE_OFF
     );
 }
+?>
+</body>
+</html>
